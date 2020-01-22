@@ -44,6 +44,28 @@ echo 'Пропущенное число - ' . $number = (count($arr) + 2) *(coun
 $arr = [];
 echo 'Пропущенное число - ' . $number = (count($arr) + 2) *(count($arr) + 1) / 2 - array_sum($arr) . '<br>';
 
+//--------------------- Задание 3 --------------------------//
+
+// делаем массив с пропущенной цифрой
+for ($i = 0; $i < 10001; $i++) {
+    $arr1[] = $i + 1;
+}
+array_splice($arr1, -3, 1);
+
+$start = microtime(true);
+
+//echo 'Пропущенное число - ' . ((count($arr1) + 2) *(count($arr1) + 1) / 2 - array_sum($arr1)) . '<br>';
+// 0.00026893615722656
+
+for ($i = 0; $i < count($arr1); $i++) {  // 0.011044979095459
+    if ($arr1[$i+1] - $arr1[$i] == 2) {
+        echo 'Пропущенное число - ' . ($arr[$i] + 1) . '<br>';
+        break;
+    }
+}
+
+echo  (string) (microtime(true) - $start);
+
 
 
 
